@@ -1,0 +1,30 @@
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+void findPairsWithSum(const vector<int>& arr, int x) {
+    int left = 0;
+    int right = arr.size() - 1;
+
+    while (left < right) {
+        int sum = arr[left] + arr[right];
+
+        if (sum == x) {
+            cout << "Pair found: (" << arr[left] << ", " << arr[right] << ")" << endl;
+            left++;
+            right--;
+        } else if (sum < x) {
+            left++;
+        } else {
+            right--;
+        }
+    }
+}
+
+int main() {
+    vector<int> arr = {1, 2, 3, 4, 6, 8, 10};
+    int x = 10;
+    findPairsWithSum(arr, x);
+    return 0;
+}
