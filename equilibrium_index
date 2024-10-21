@@ -1,0 +1,32 @@
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+int findEquilibriumIndex(const vector<int>& arr) {
+    int totalSum = 0;
+    int leftSum = 0;
+
+    for (int num : arr) {
+        totalSum += num;
+    }
+
+    for (size_t i = 0; i < arr.size(); ++i) {
+        totalSum -= arr[i];
+
+        if (leftSum == totalSum) {
+            return i;
+        }
+
+        leftSum += arr[i];
+    }
+
+    return -1;
+}
+
+int main() {
+    vector<int> arr = {1, 3, 5, 2, 2};
+    int result = findEquilibriumIndex(arr);
+    cout << "Equilibrium index: " << result << endl;
+    return 0;
+}
